@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../samples/InMemoryBucket.Sample.Standalone/InMemoryBucket.Sample.Standalone.csproj" />
+    <ProjectReference Include="../InMemoryBucket.Sample.Standalone/InMemoryBucket.Sample.Standalone.csproj" />
     <PackageReference Include="AWSSDK.S3" />
     <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio" />

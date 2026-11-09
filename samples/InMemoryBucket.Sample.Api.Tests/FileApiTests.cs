@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace InMemoryBucket.Sample.Tests;
+namespace InMemoryBucket.Sample.Api.Tests;
 
 /// <summary>
 /// The pattern InMemoryBucket exists for: the real app, the real AmazonS3Client, and only the transport swapped.

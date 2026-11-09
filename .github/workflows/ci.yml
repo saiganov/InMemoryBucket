@@ -42,11 +42,11 @@ jobs:
       - run: dotnet build --no-restore -c Release ${SDK_ARGS:+"$SDK_ARGS"}
       - name: AWSSDK.S3 version under test
         run: grep -o '"AWSSDK.S3/[^"]*"' tests/InMemoryBucket.Tests/obj/project.assets.json | head -1
-      # Every test project except the MinIO contract run, which needs Docker and runs nightly (nightly.yml).
+      # Every test project, the samples' included, except the MinIO contract run, which needs Docker and runs nightly (nightly.yml).
       - name: Test
         run: |
           set -e
-          for project in tests/*/*.csproj; do
+          for project in tests/*/*.csproj samples/*.Tests/*.csproj; do
             case "$project" in */InMemoryBucket.Tests.MinIO/*) continue ;; esac
             echo "::group::$project"
             dotnet test --project "$project" --no-build -c Release

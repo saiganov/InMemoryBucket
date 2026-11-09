@@ -16,21 +16,17 @@
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/InMemoryBucket.Sample.Api/InMemoryBucket.Sample.Api.csproj" />
-    <Project Path="samples/InMemoryBucket.Sample.Worker/InMemoryBucket.Sample.Worker.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Api.Tests/InMemoryBucket.Sample.Api.Tests.csproj" />
     <Project Path="samples/InMemoryBucket.Sample.Presigned/InMemoryBucket.Sample.Presigned.csproj" />
-    <Project Path="samples/InMemoryBucket.Sample.Resilience/InMemoryBucket.Sample.Resilience.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Presigned.Tests/InMemoryBucket.Sample.Presigned.Tests.csproj" />
     <Project Path="samples/InMemoryBucket.Sample.Minio/InMemoryBucket.Sample.Minio.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Minio.Tests/InMemoryBucket.Sample.Minio.Tests.csproj" />
     <Project Path="samples/InMemoryBucket.Sample.Standalone/InMemoryBucket.Sample.Standalone.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Standalone.Tests/InMemoryBucket.Sample.Standalone.Tests.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/InMemoryBucket.Tests/InMemoryBucket.Tests.csproj" />
     <Project Path="tests/InMemoryBucket.Tests.MinIO/InMemoryBucket.Tests.MinIO.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Tests/InMemoryBucket.Sample.Tests.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Worker.Tests/InMemoryBucket.Sample.Worker.Tests.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Presigned.Tests/InMemoryBucket.Sample.Presigned.Tests.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Resilience.Tests/InMemoryBucket.Sample.Resilience.Tests.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Minio.Tests/InMemoryBucket.Sample.Minio.Tests.csproj" />
-    <Project Path="tests/InMemoryBucket.Sample.Standalone.Tests/InMemoryBucket.Sample.Standalone.Tests.csproj" />
     <Project Path="tests/InMemoryBucket.Hosting.Tests/InMemoryBucket.Hosting.Tests.csproj" />
   </Folder>
   <Folder Name="/benchmarks/">

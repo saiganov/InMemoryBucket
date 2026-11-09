@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../samples/InMemoryBucket.Sample.Minio/InMemoryBucket.Sample.Minio.csproj" />
+    <ProjectReference Include="../InMemoryBucket.Sample.Minio/InMemoryBucket.Sample.Minio.csproj" />
     <ProjectReference Include="../../src/InMemoryBucket.Http/InMemoryBucket.Http.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="xunit.v3" />
