@@ -46,8 +46,7 @@ public class ObjectBenchmarks
     public async Task<long> GetObject()
     {
         using var response = await _client.GetObjectAsync(Bucket, "existing");
-        using var sink = new MemoryStream(Size);
-        await response.ResponseStream.CopyToAsync(sink);
-        return sink.Length;
+        await response.ResponseStream.CopyToAsync(Stream.Null); // no buffer of our own in the allocation figures
+        return response.ContentLength;
     }
 }

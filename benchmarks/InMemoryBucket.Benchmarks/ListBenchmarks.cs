@@ -26,6 +26,13 @@ public class ListBenchmarks
         {
             _server.Seed(Bucket, $"dir{i % 100:D3}/file{i:D6}.json", "{}");
         }
+
+        // A paging bug would otherwise show up as a faster benchmark.
+        var listed = ListAllKeys().GetAwaiter().GetResult();
+        if (listed != Keys)
+        {
+            throw new InvalidOperationException($"Listed {listed} keys, expected {Keys}.");
+        }
     }
 
     [GlobalCleanup]

@@ -173,32 +173,33 @@ The wire format is pinned by approved snapshots in `tests/InMemoryBucket.Tests/S
 
 ## Performance
 
-Time to the first green test, from the start of a fresh test process to a PutObject and GetObject that succeeded (median of 5 runs, MinIO image already pulled):
+Time to the first green test: from the moment the OS starts a fresh process to a PutObject and GetObject that succeeded (median of 5 runs, images already pulled; the test host's own start-up is not counted on either side):
 
 | | Time |
 |---|---:|
-| InMemoryBucket | 0.4 s |
-| MinIO started by Testcontainers | 3.5 s |
+| InMemoryBucket | 0.43 s |
+| MinIO started by Testcontainers | 3.7 s |
 
-Most of the 0.4 s is JIT and AWS SDK start-up, which a MinIO test pays too. After that, a test that builds its own server costs well under a millisecond:
+Most of the 0.43 s is runtime, JIT and AWS SDK start-up, which a MinIO test pays too. About 1.2 s of the MinIO time is Testcontainers starting its Ryuk cleanup container before MinIO itself. After that, a test that builds its own server costs well under a millisecond:
 
 | Benchmark (through a real `AmazonS3Client`) | Mean | Allocated |
 |---|---:|---:|
 | New server, client, PutObject and GetObject, dispose | 0.39 ms | 326 KB |
-| PutObject, 1 KB | 0.18 ms | 250 KB |
-| GetObject, 1 KB | 0.11 ms | 70 KB |
-| PutObject, 1 MB | 6.9 ms | 4.4 MB |
-| GetObject, 1 MB | 6.6 ms | 2.5 MB |
-| ListObjectsV2 through all 10,000 keys (10 pages) | 65 ms | 41 MB |
+| PutObject, 1 KB | 0.20 ms | 250 KB |
+| GetObject, 1 KB | 0.12 ms | 69 KB |
+| PutObject, 1 MB | 7.5 ms | 4.4 MB |
+| GetObject, 1 MB | 5.8 ms | 1.5 MB |
+| ListObjectsV2 through all 10,000 keys (10 pages) | 69 ms | 41 MB |
 
 Measured on 4 cores of an Intel Xeon at 2.1 GHz, 16 GB, Ubuntu 24.04, .NET 10.0.14, AWSSDK.S3 4.0.13.1, Docker 29, `bitnamilegacy/minio`. The benchmarks are in `benchmarks/InMemoryBucket.Benchmarks` and run by hand, not in CI:
 
 ```bash
 dotnet run -c Release --project benchmarks/InMemoryBucket.Benchmarks -- --filter '*'   # BenchmarkDotNet
-dotnet run -c Release --project benchmarks/InMemoryBucket.Benchmarks -- startup        # first green test vs MinIO (needs Docker)
+INMEMORYBUCKET_MINIO_IMAGE=bitnamilegacy/minio:latest INMEMORYBUCKET_MINIO_COMMAND=/opt/bitnami/scripts/minio/run.sh \
+  dotnet run -c Release --project benchmarks/InMemoryBucket.Benchmarks -- startup       # first green test vs MinIO (needs Docker)
 ```
 
-The MinIO image and command come from `INMEMORYBUCKET_MINIO_IMAGE` and `INMEMORYBUCKET_MINIO_COMMAND`, as for the contract tests.
+Without the two variables `startup` uses the contract tests' default image, `cgr.dev/chainguard/minio`. Pull the MinIO and `testcontainers/ryuk` images before measuring, or the first run includes the download.
 
 ## Packages
 
