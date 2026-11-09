@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Benchmarks, run by hand before a release (not in CI: shared runners are too noisy for useful numbers).
+    How to run them is in the README, section "Performance".
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>$(NetTestVersion)</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/InMemoryBucket.AwsSdk/InMemoryBucket.AwsSdk.csproj" />
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Testcontainers" />
+  </ItemGroup>
+
+</Project>
