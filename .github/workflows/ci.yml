@@ -34,8 +34,8 @@ jobs:
     env:
       SDK_ARGS: ${{ matrix.aws-sdk.version != '' && format('-p:AwsSdkS3Version={0}', matrix.aws-sdk.version) || '' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
       - run: dotnet restore ${SDK_ARGS:+"$SDK_ARGS"}
@@ -70,8 +70,8 @@ jobs:
       contents: read
       id-token: write # Trusted Publishing: nuget.org trades the workflow's OIDC token for a short-lived API key
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
       - run: dotnet pack -c Release -o artifacts -p:Version=${GITHUB_REF_NAME#v}
@@ -87,7 +87,7 @@ jobs:
           --source https://api.nuget.org/v3/index.json
           --api-key "${{ steps.nuget.outputs.NUGET_API_KEY }}"
           --skip-duplicate
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: packages
           path: |
