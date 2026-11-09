@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetLibVersion)</TargetFramework>
+    <Description>Serves an InMemoryBucket S3 fake over real HTTP on Kestrel, for clients that cannot take an HttpMessageHandler: other processes, containers, the AWS CLI, or any SDK pointed at an endpoint URL.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../InMemoryBucket/InMemoryBucket.csproj" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

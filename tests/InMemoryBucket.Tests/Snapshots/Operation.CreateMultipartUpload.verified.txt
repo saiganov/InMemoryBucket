@@ -1,0 +1,14 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000001
+x-amz-server-side-encryption: AES256
+
+<?xml version="1.0" encoding="utf-8"?>
+<InitiateMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Bucket>snap</Bucket>
+  <Key>big.bin</Key>
+  <UploadId>upload-1</UploadId>
+</InitiateMultipartUploadResult>

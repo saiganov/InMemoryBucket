@@ -1,0 +1,15 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000001
+x-amz-server-side-encryption: AES256
+
+<?xml version="1.0" encoding="utf-8"?>
+<CopyObjectResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <LastModified>2026-01-01T00:01:00.000Z</LastModified>
+  <ETag>"1c469b345473c0fe03d03bb188d54f6a"</ETag>
+  <ChecksumCRC32>4Qez4Q==</ChecksumCRC32>
+  <ChecksumType>FULL_OBJECT</ChecksumType>
+</CopyObjectResult>

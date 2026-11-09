@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetTestVersion)</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Compile Include="../InMemoryBucket.ContractTests/**/*.cs" LinkBase="ContractTests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/InMemoryBucket.AwsSdk/InMemoryBucket.AwsSdk.csproj" />
+    <ProjectReference Include="../../src/InMemoryBucket.Http/InMemoryBucket.Http.csproj" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="CsCheck" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Minio" />
+  </ItemGroup>
+
+</Project>

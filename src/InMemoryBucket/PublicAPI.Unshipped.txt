@@ -1,0 +1,218 @@
+#nullable enable
+InMemoryBucket.Hooks.FaultAction
+InMemoryBucket.Hooks.FaultAction.Delay
+InMemoryBucket.Hooks.FaultAction.Delay.Deconstruct(out System.TimeSpan Duration) -> void
+InMemoryBucket.Hooks.FaultAction.Delay.Delay(System.TimeSpan Duration) -> void
+InMemoryBucket.Hooks.FaultAction.Delay.Duration.get -> System.TimeSpan
+InMemoryBucket.Hooks.FaultAction.Delay.Duration.init -> void
+InMemoryBucket.Hooks.FaultAction.Delay.Equals(InMemoryBucket.Hooks.FaultAction.Delay? other) -> bool
+InMemoryBucket.Hooks.FaultAction.Error
+InMemoryBucket.Hooks.FaultAction.Error.Code.get -> InMemoryBucket.Core.S3ErrorCode!
+InMemoryBucket.Hooks.FaultAction.Error.Code.init -> void
+InMemoryBucket.Hooks.FaultAction.Error.Deconstruct(out InMemoryBucket.Core.S3ErrorCode! Code, out string? Message) -> void
+InMemoryBucket.Hooks.FaultAction.Error.Equals(InMemoryBucket.Hooks.FaultAction.Error? other) -> bool
+InMemoryBucket.Hooks.FaultAction.Error.Error(InMemoryBucket.Core.S3ErrorCode! Code, string? Message = null) -> void
+InMemoryBucket.Hooks.FaultAction.Error.Message.get -> string?
+InMemoryBucket.Hooks.FaultAction.Error.Message.init -> void
+InMemoryBucket.Hooks.FaultAction.FaultAction() -> void
+InMemoryBucket.Hooks.FaultAction.FaultAction(InMemoryBucket.Hooks.FaultAction! original) -> void
+InMemoryBucket.Hooks.FaultAction.Throw
+InMemoryBucket.Hooks.FaultAction.Throw.Deconstruct(out System.Exception! Exception) -> void
+InMemoryBucket.Hooks.FaultAction.Throw.Equals(InMemoryBucket.Hooks.FaultAction.Throw? other) -> bool
+InMemoryBucket.Hooks.FaultAction.Throw.Exception.get -> System.Exception!
+InMemoryBucket.Hooks.FaultAction.Throw.Exception.init -> void
+InMemoryBucket.Hooks.FaultAction.Throw.Throw(System.Exception! Exception) -> void
+InMemoryBucket.Hooks.FaultRule
+InMemoryBucket.Hooks.FaultRule.Action.get -> InMemoryBucket.Hooks.FaultAction!
+InMemoryBucket.Hooks.FaultRule.FaultRule(System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, InMemoryBucket.Hooks.FaultAction! action, int? times = null) -> void
+InMemoryBucket.Hooks.FaultRule.Predicate.get -> System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>!
+InMemoryBucket.Hooks.FaultRule.Remaining.get -> int?
+InMemoryBucket.Hooks.FaultRules
+InMemoryBucket.Hooks.FaultRules.Add(InMemoryBucket.Hooks.FaultRule! rule) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.FaultRules.Always(System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, InMemoryBucket.Core.S3ErrorCode! code, string? message = null) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.FaultRules.Clear() -> void
+InMemoryBucket.Hooks.FaultRules.Delay(System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, System.TimeSpan duration, int? times = null) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.FaultRules.FaultRules() -> void
+InMemoryBucket.Hooks.FaultRules.Once(System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, InMemoryBucket.Core.S3ErrorCode! code, string? message = null) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.FaultRules.Remove(InMemoryBucket.Hooks.FaultRule! rule) -> bool
+InMemoryBucket.Hooks.FaultRules.Rules.get -> System.Collections.Generic.IReadOnlyList<InMemoryBucket.Hooks.FaultRule!>!
+InMemoryBucket.Hooks.FaultRules.Throw(System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, System.Exception! exception, int? times = null) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.FaultRules.Times(int count, System.Func<InMemoryBucket.Hooks.RecordedRequest!, bool>! predicate, InMemoryBucket.Core.S3ErrorCode! code, string? message = null) -> InMemoryBucket.Hooks.FaultRule!
+InMemoryBucket.Hooks.RecordedRequest
+InMemoryBucket.Hooks.RecordedRequest.AccessKey.get -> string?
+InMemoryBucket.Hooks.RecordedRequest.Body.get -> System.ReadOnlyMemory<byte>?
+InMemoryBucket.Hooks.RecordedRequest.Bucket.get -> string?
+InMemoryBucket.Hooks.RecordedRequest.ContentLength.get -> long
+InMemoryBucket.Hooks.RecordedRequest.Duration.get -> System.TimeSpan
+InMemoryBucket.Hooks.RecordedRequest.ErrorCode.get -> string?
+InMemoryBucket.Hooks.RecordedRequest.Faulted.get -> bool
+InMemoryBucket.Hooks.RecordedRequest.Header(string! name) -> string?
+InMemoryBucket.Hooks.RecordedRequest.Headers.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+InMemoryBucket.Hooks.RecordedRequest.Key.get -> string?
+InMemoryBucket.Hooks.RecordedRequest.Method.get -> string!
+InMemoryBucket.Hooks.RecordedRequest.Operation.get -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Hooks.RecordedRequest.Query.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+InMemoryBucket.Hooks.RecordedRequest.StatusCode.get -> int
+InMemoryBucket.Hooks.RecordedRequest.Timestamp.get -> System.DateTimeOffset
+InMemoryBucket.Hooks.RequestLog
+InMemoryBucket.Hooks.RequestLog.Clear() -> void
+InMemoryBucket.Hooks.RequestLog.Count.get -> int
+InMemoryBucket.Hooks.RequestLog.GetEnumerator() -> System.Collections.Generic.IEnumerator<InMemoryBucket.Hooks.RecordedRequest!>!
+InMemoryBucket.Hooks.RequestLog.Last.get -> InMemoryBucket.Hooks.RecordedRequest?
+InMemoryBucket.InMemoryBucketOptions
+InMemoryBucket.InMemoryBucketOptions.Buckets.get -> System.Collections.Generic.IList<string!>!
+InMemoryBucket.InMemoryBucketOptions.CaptureBodies.get -> bool
+InMemoryBucket.InMemoryBucketOptions.CaptureBodies.set -> void
+InMemoryBucket.InMemoryBucketOptions.ClockSkewTolerance.get -> System.TimeSpan
+InMemoryBucket.InMemoryBucketOptions.ClockSkewTolerance.set -> void
+InMemoryBucket.InMemoryBucketOptions.CreateBuckets(params string![]! names) -> InMemoryBucket.InMemoryBucketOptions!
+InMemoryBucket.InMemoryBucketOptions.Credentials.get -> System.Collections.Generic.IDictionary<string!, string!>!
+InMemoryBucket.InMemoryBucketOptions.EnforcePresignedExpiry.get -> bool
+InMemoryBucket.InMemoryBucketOptions.EnforcePresignedExpiry.set -> void
+InMemoryBucket.InMemoryBucketOptions.Host.get -> string!
+InMemoryBucket.InMemoryBucketOptions.Host.set -> void
+InMemoryBucket.InMemoryBucketOptions.InMemoryBucketOptions() -> void
+InMemoryBucket.InMemoryBucketOptions.Logger.get -> Microsoft.Extensions.Logging.ILogger?
+InMemoryBucket.InMemoryBucketOptions.Logger.set -> void
+InMemoryBucket.InMemoryBucketOptions.MaxTotalBytes.get -> long?
+InMemoryBucket.InMemoryBucketOptions.MaxTotalBytes.set -> void
+InMemoryBucket.InMemoryBucketOptions.OwnerDisplayName.get -> string!
+InMemoryBucket.InMemoryBucketOptions.OwnerDisplayName.set -> void
+InMemoryBucket.InMemoryBucketOptions.OwnerId.get -> string!
+InMemoryBucket.InMemoryBucketOptions.OwnerId.set -> void
+InMemoryBucket.InMemoryBucketOptions.Region.get -> string!
+InMemoryBucket.InMemoryBucketOptions.Region.set -> void
+InMemoryBucket.InMemoryBucketOptions.RequestLogCapacity.get -> int
+InMemoryBucket.InMemoryBucketOptions.RequestLogCapacity.set -> void
+InMemoryBucket.InMemoryBucketOptions.TimeProvider.get -> System.TimeProvider!
+InMemoryBucket.InMemoryBucketOptions.TimeProvider.set -> void
+InMemoryBucket.InMemoryBucketOptions.UploadIdGenerator.get -> System.Func<string!>?
+InMemoryBucket.InMemoryBucketOptions.UploadIdGenerator.set -> void
+InMemoryBucket.InMemoryBucketOptions.UseCredentials(string! accessKey, string! secretKey) -> InMemoryBucket.InMemoryBucketOptions!
+InMemoryBucket.InMemoryBucketOptions.ValidateChecksums.get -> bool
+InMemoryBucket.InMemoryBucketOptions.ValidateChecksums.set -> void
+InMemoryBucket.InMemoryBucketOptions.ValidateSignatures.get -> bool
+InMemoryBucket.InMemoryBucketOptions.ValidateSignatures.set -> void
+InMemoryBucket.InMemoryBucketServer
+InMemoryBucket.InMemoryBucketServer.BaseAddress.get -> System.Uri!
+InMemoryBucket.InMemoryBucketServer.CreateHandler() -> System.Net.Http.HttpMessageHandler!
+InMemoryBucket.InMemoryBucketServer.CreateHttpClient() -> System.Net.Http.HttpClient!
+InMemoryBucket.InMemoryBucketServer.Dispose() -> void
+InMemoryBucket.InMemoryBucketServer.Faults.get -> InMemoryBucket.Hooks.FaultRules!
+InMemoryBucket.InMemoryBucketServer.GetObject(string! bucket, string! key) -> InMemoryBucket.Core.S3Object?
+InMemoryBucket.InMemoryBucketServer.HandleAsync(InMemoryBucket.Protocol.S3Request! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<InMemoryBucket.Protocol.S3Response!>
+InMemoryBucket.InMemoryBucketServer.InMemoryBucketServer(System.Action<InMemoryBucket.InMemoryBucketOptions!>? configure = null) -> void
+InMemoryBucket.InMemoryBucketServer.ListKeys(string! bucket, string! prefix = "") -> System.Collections.Generic.IReadOnlyList<string!>!
+InMemoryBucket.InMemoryBucketServer.Options.get -> InMemoryBucket.InMemoryBucketOptions!
+InMemoryBucket.InMemoryBucketServer.Requests.get -> InMemoryBucket.Hooks.RequestLog!
+InMemoryBucket.InMemoryBucketServer.Reset() -> void
+InMemoryBucket.InMemoryBucketServer.Seed(string! bucket, string! key, System.IO.Stream! content, InMemoryBucket.SeedOptions? options = null) -> InMemoryBucket.Core.S3Object!
+InMemoryBucket.InMemoryBucketServer.Seed(string! bucket, string! key, System.ReadOnlySpan<byte> data, InMemoryBucket.SeedOptions? options = null) -> InMemoryBucket.Core.S3Object!
+InMemoryBucket.InMemoryBucketServer.Seed(string! bucket, string! key, string! content, InMemoryBucket.SeedOptions? options = null) -> InMemoryBucket.Core.S3Object!
+InMemoryBucket.InMemoryBucketServer.Store.get -> InMemoryBucket.Core.ObjectStore!
+InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.AbortMultipartUpload = 20 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.CompleteMultipartUpload = 19 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.CopyObject = 12 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.CreateBucket = 2 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.CreateMultipartUpload = 16 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.DeleteBucket = 4 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.DeleteObject = 15 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.DeleteObjectTagging = 24 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.DeleteObjects = 10 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.GetBucketAcl = 6 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.GetBucketLocation = 5 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.GetObject = 13 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.GetObjectTagging = 22 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.HeadBucket = 3 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.HeadObject = 14 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.ListBuckets = 1 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.ListMultipartUploads = 9 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.ListObjects = 7 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.ListObjectsV2 = 8 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.ListParts = 21 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.PutObject = 11 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.PutObjectTagging = 23 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.Unknown = 0 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.UploadPart = 17 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Operation.UploadPartCopy = 18 -> InMemoryBucket.Protocol.S3Operation
+InMemoryBucket.Protocol.S3Request
+InMemoryBucket.Protocol.S3Request.Body.get -> System.ReadOnlyMemory<byte>
+InMemoryBucket.Protocol.S3Request.Body.init -> void
+InMemoryBucket.Protocol.S3Request.Bucket.get -> string!
+InMemoryBucket.Protocol.S3Request.Bucket.init -> void
+InMemoryBucket.Protocol.S3Request.DeclaredChecksums.get -> InMemoryBucket.Core.ChecksumSet!
+InMemoryBucket.Protocol.S3Request.DeclaredChecksums.init -> void
+InMemoryBucket.Protocol.S3Request.HasQuery(string! name) -> bool
+InMemoryBucket.Protocol.S3Request.Header(string! name) -> string?
+InMemoryBucket.Protocol.S3Request.Headers.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+InMemoryBucket.Protocol.S3Request.Headers.init -> void
+InMemoryBucket.Protocol.S3Request.HeadersAsSent.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+InMemoryBucket.Protocol.S3Request.HeadersAsSent.init -> void
+InMemoryBucket.Protocol.S3Request.Host.get -> string!
+InMemoryBucket.Protocol.S3Request.Host.init -> void
+InMemoryBucket.Protocol.S3Request.Key.get -> string!
+InMemoryBucket.Protocol.S3Request.Key.init -> void
+InMemoryBucket.Protocol.S3Request.Method.get -> string!
+InMemoryBucket.Protocol.S3Request.Method.init -> void
+InMemoryBucket.Protocol.S3Request.Query.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+InMemoryBucket.Protocol.S3Request.Query.init -> void
+InMemoryBucket.Protocol.S3Request.QueryValue(string! name) -> string?
+InMemoryBucket.Protocol.S3Request.RawPath.get -> string!
+InMemoryBucket.Protocol.S3Request.RawPath.init -> void
+InMemoryBucket.Protocol.S3Request.RawQuery.get -> string!
+InMemoryBucket.Protocol.S3Request.RawQuery.init -> void
+InMemoryBucket.Protocol.S3Request.Resource.get -> string!
+InMemoryBucket.Protocol.S3Request.S3Request() -> void
+InMemoryBucket.Protocol.S3Response
+InMemoryBucket.Protocol.S3Response.Body.get -> System.ReadOnlyMemory<byte>
+InMemoryBucket.Protocol.S3Response.Body.init -> void
+InMemoryBucket.Protocol.S3Response.DeclaredContentLength.get -> long?
+InMemoryBucket.Protocol.S3Response.DeclaredContentLength.init -> void
+InMemoryBucket.Protocol.S3Response.ErrorCode.get -> string?
+InMemoryBucket.Protocol.S3Response.ErrorCode.init -> void
+InMemoryBucket.Protocol.S3Response.Headers.get -> System.Collections.Generic.Dictionary<string!, string!>!
+InMemoryBucket.Protocol.S3Response.S3Response() -> void
+InMemoryBucket.Protocol.S3Response.StatusCode.get -> int
+InMemoryBucket.Protocol.S3Response.StatusCode.init -> void
+InMemoryBucket.Protocol.S3Response.WithHeader(string! name, string! value) -> InMemoryBucket.Protocol.S3Response!
+InMemoryBucket.SeedOptions
+InMemoryBucket.SeedOptions.ContentType.get -> string?
+InMemoryBucket.SeedOptions.ContentType.init -> void
+InMemoryBucket.SeedOptions.LastModified.get -> System.DateTimeOffset?
+InMemoryBucket.SeedOptions.LastModified.init -> void
+InMemoryBucket.SeedOptions.Metadata.get -> System.Collections.Generic.IDictionary<string!, string!>!
+InMemoryBucket.SeedOptions.SeedOptions() -> void
+InMemoryBucket.SeedOptions.Tags.get -> System.Collections.Generic.IDictionary<string!, string!>!
+abstract InMemoryBucket.Hooks.FaultAction.<Clone>$() -> InMemoryBucket.Hooks.FaultAction!
+override InMemoryBucket.Hooks.FaultAction.Delay.<Clone>$() -> InMemoryBucket.Hooks.FaultAction.Delay!
+override InMemoryBucket.Hooks.FaultAction.Delay.Equals(object? obj) -> bool
+override InMemoryBucket.Hooks.FaultAction.Delay.GetHashCode() -> int
+override InMemoryBucket.Hooks.FaultAction.Delay.ToString() -> string!
+override InMemoryBucket.Hooks.FaultAction.Equals(object? obj) -> bool
+override InMemoryBucket.Hooks.FaultAction.Error.<Clone>$() -> InMemoryBucket.Hooks.FaultAction.Error!
+override InMemoryBucket.Hooks.FaultAction.Error.Equals(object? obj) -> bool
+override InMemoryBucket.Hooks.FaultAction.Error.GetHashCode() -> int
+override InMemoryBucket.Hooks.FaultAction.Error.ToString() -> string!
+override InMemoryBucket.Hooks.FaultAction.GetHashCode() -> int
+override InMemoryBucket.Hooks.FaultAction.Throw.<Clone>$() -> InMemoryBucket.Hooks.FaultAction.Throw!
+override InMemoryBucket.Hooks.FaultAction.Throw.Equals(object? obj) -> bool
+override InMemoryBucket.Hooks.FaultAction.Throw.GetHashCode() -> int
+override InMemoryBucket.Hooks.FaultAction.Throw.ToString() -> string!
+override InMemoryBucket.Hooks.FaultAction.ToString() -> string!
+override InMemoryBucket.Hooks.RecordedRequest.ToString() -> string!
+override sealed InMemoryBucket.Hooks.FaultAction.Delay.Equals(InMemoryBucket.Hooks.FaultAction? other) -> bool
+override sealed InMemoryBucket.Hooks.FaultAction.Error.Equals(InMemoryBucket.Hooks.FaultAction? other) -> bool
+override sealed InMemoryBucket.Hooks.FaultAction.Throw.Equals(InMemoryBucket.Hooks.FaultAction? other) -> bool
+static InMemoryBucket.Hooks.FaultAction.Delay.operator !=(InMemoryBucket.Hooks.FaultAction.Delay? left, InMemoryBucket.Hooks.FaultAction.Delay? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.Delay.operator ==(InMemoryBucket.Hooks.FaultAction.Delay? left, InMemoryBucket.Hooks.FaultAction.Delay? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.Error.operator !=(InMemoryBucket.Hooks.FaultAction.Error? left, InMemoryBucket.Hooks.FaultAction.Error? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.Error.operator ==(InMemoryBucket.Hooks.FaultAction.Error? left, InMemoryBucket.Hooks.FaultAction.Error? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.Throw.operator !=(InMemoryBucket.Hooks.FaultAction.Throw? left, InMemoryBucket.Hooks.FaultAction.Throw? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.Throw.operator ==(InMemoryBucket.Hooks.FaultAction.Throw? left, InMemoryBucket.Hooks.FaultAction.Throw? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.operator !=(InMemoryBucket.Hooks.FaultAction? left, InMemoryBucket.Hooks.FaultAction? right) -> bool
+static InMemoryBucket.Hooks.FaultAction.operator ==(InMemoryBucket.Hooks.FaultAction? left, InMemoryBucket.Hooks.FaultAction? right) -> bool
+static InMemoryBucket.Protocol.S3Request.Parse(string! method, string! host, string! rawPath, string! rawQuery, System.Collections.Generic.Dictionary<string!, string!>! headers, byte[]! body, string! serverHost) -> InMemoryBucket.Protocol.S3Request!
+virtual InMemoryBucket.Hooks.FaultAction.EqualityContract.get -> System.Type!
+virtual InMemoryBucket.Hooks.FaultAction.Equals(InMemoryBucket.Hooks.FaultAction? other) -> bool
+virtual InMemoryBucket.Hooks.FaultAction.PrintMembers(System.Text.StringBuilder! builder) -> bool

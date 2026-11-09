@@ -1,0 +1,14 @@
+HTTP 200
+Accept-Ranges: bytes
+Content-Type: text/plain
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+ETag: "1c469b345473c0fe03d03bb188d54f6a"
+Last-Modified: Thu, 01 Jan 2026 00:00:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-meta-owner: alice
+x-amz-request-id: 0000000000000001
+x-amz-server-side-encryption: AES256
+x-amz-tagging-count: 1
+(declared Content-Length: 14)
+

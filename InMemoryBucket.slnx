@@ -1,0 +1,36 @@
+<Solution>
+  <Folder Name="/build/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="NuGet.Config" />
+    <File Path="README.md" />
+    <File Path="RELEASE_NOTES.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/InMemoryBucket.Core/InMemoryBucket.Core.csproj" />
+    <Project Path="src/InMemoryBucket/InMemoryBucket.csproj" />
+    <Project Path="src/InMemoryBucket.AwsSdk/InMemoryBucket.AwsSdk.csproj" />
+    <Project Path="src/InMemoryBucket.Http/InMemoryBucket.Http.csproj" />
+    <Project Path="src/InMemoryBucket.Hosting/InMemoryBucket.Hosting.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/InMemoryBucket.Sample.Api/InMemoryBucket.Sample.Api.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Worker/InMemoryBucket.Sample.Worker.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Presigned/InMemoryBucket.Sample.Presigned.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Resilience/InMemoryBucket.Sample.Resilience.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Minio/InMemoryBucket.Sample.Minio.csproj" />
+    <Project Path="samples/InMemoryBucket.Sample.Standalone/InMemoryBucket.Sample.Standalone.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/InMemoryBucket.Tests/InMemoryBucket.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Tests.MinIO/InMemoryBucket.Tests.MinIO.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Tests/InMemoryBucket.Sample.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Worker.Tests/InMemoryBucket.Sample.Worker.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Presigned.Tests/InMemoryBucket.Sample.Presigned.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Resilience.Tests/InMemoryBucket.Sample.Resilience.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Minio.Tests/InMemoryBucket.Sample.Minio.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Sample.Standalone.Tests/InMemoryBucket.Sample.Standalone.Tests.csproj" />
+    <Project Path="tests/InMemoryBucket.Hosting.Tests/InMemoryBucket.Hosting.Tests.csproj" />
+  </Folder>
+</Solution>

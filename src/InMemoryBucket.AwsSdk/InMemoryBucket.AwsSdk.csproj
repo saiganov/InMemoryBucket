@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetLibVersion)</TargetFramework>
+    <Description>AWS SDK for .NET integration for InMemoryBucket: create a real AmazonS3Client wired to the in-memory server, or register it in IServiceCollection.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../InMemoryBucket/InMemoryBucket.csproj" />
+    <PackageReference Include="AWSSDK.S3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

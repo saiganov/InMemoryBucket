@@ -1,0 +1,30 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000002
+
+<?xml version="1.0" encoding="utf-8"?>
+<ListMultipartUploadsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Bucket>snap</Bucket>
+  <KeyMarker></KeyMarker>
+  <UploadIdMarker></UploadIdMarker>
+  <Prefix></Prefix>
+  <MaxUploads>1000</MaxUploads>
+  <IsTruncated>false</IsTruncated>
+  <Upload>
+    <Key>big.bin</Key>
+    <UploadId>upload-1</UploadId>
+    <Initiator>
+      <ID>inmemorybucket</ID>
+      <DisplayName>inmemorybucket</DisplayName>
+    </Initiator>
+    <Owner>
+      <ID>inmemorybucket</ID>
+      <DisplayName>inmemorybucket</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+    <Initiated>2026-01-01T00:01:00.000Z</Initiated>
+  </Upload>
+</ListMultipartUploadsResult>

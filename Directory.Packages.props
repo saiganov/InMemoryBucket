@@ -1,0 +1,50 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+      The lowest AWSSDK.S3 the packages support: InMemoryBucket.AwsSdk compiles against it and its package depends on
+      ">= this". Older 4.0.x versions pull an AWSSDK.Core with a known vulnerability (GHSA-9cvc-h2w8-phrp) and 4.0.0 fails
+      the presigned-URL tests. CI also runs every test against the newest 4.x: -p:AwsSdkS3Version=4.* (a floating version,
+      which turns on CentralPackageFloatingVersionsEnabled below).
+    -->
+    <AwsSdkS3Version Condition="'$(AwsSdkS3Version)' == ''">4.0.13.1</AwsSdkS3Version>
+    <CentralPackageFloatingVersionsEnabled Condition="$(AwsSdkS3Version.Contains('*'))">true</CentralPackageFloatingVersionsEnabled>
+  </PropertyGroup>
+
+  <!--
+    Libraries depend on the lowest versions they work with, so a net8.0 application is not forced onto Microsoft.Extensions 10.x.
+    Tests and samples may use newer packages; NuGet picks the higher version for them.
+  -->
+  <ItemGroup Label="Library Dependencies">
+    <PackageVersion Include="System.IO.Hashing" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="AWSSDK.S3" Version="$(AwsSdkS3Version)" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Build Dependencies">
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Test Dependencies">
+    <PackageVersion Include="xunit.v3" Version="4.0.2" />
+    <PackageVersion Include="CsCheck" Version="4.9.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="10.11.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
+    <PackageVersion Include="Testcontainers" Version="4.16.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.14" />
+    <PackageVersion Include="Minio" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup Label="Sample Dependencies">
+    <PackageVersion Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.102.7" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.14" />
+  </ItemGroup>
+</Project>

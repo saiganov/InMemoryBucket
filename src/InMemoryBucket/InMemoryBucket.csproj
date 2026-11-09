@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetLibVersion)</TargetFramework>
+    <Description>In-process S3 emulator for .NET tests: an HttpMessageHandler that speaks the S3 REST protocol over an in-memory store. No Docker, no ports.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../InMemoryBucket.Core/InMemoryBucket.Core.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="InMemoryBucket.Tests" />
+  </ItemGroup>
+
+</Project>

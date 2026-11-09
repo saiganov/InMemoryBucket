@@ -1,0 +1,174 @@
+#nullable enable
+const InMemoryBucket.Core.ServerSideEncryption.Aes256 = "AES256" -> string!
+const InMemoryBucket.Core.ServerSideEncryption.Kms = "aws:kms" -> string!
+const InMemoryBucket.Core.ServerSideEncryption.KmsDsse = "aws:kms:dsse" -> string!
+InMemoryBucket.Core.Bucket
+InMemoryBucket.Core.Bucket.CreationDate.get -> System.DateTimeOffset
+InMemoryBucket.Core.Bucket.Get(string! key) -> InMemoryBucket.Core.S3Object!
+InMemoryBucket.Core.Bucket.Name.get -> string!
+InMemoryBucket.Core.Bucket.ObjectCount.get -> int
+InMemoryBucket.Core.Bucket.Objects.get -> System.Collections.Generic.IReadOnlyCollection<InMemoryBucket.Core.S3Object!>!
+InMemoryBucket.Core.Bucket.TryGet(string! key, out InMemoryBucket.Core.S3Object! obj) -> bool
+InMemoryBucket.Core.Bucket.Uploads.get -> System.Collections.Generic.IReadOnlyCollection<InMemoryBucket.Core.MultipartUpload!>!
+InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumAlgorithm.Crc32 = 0 -> InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumAlgorithm.Crc32C = 1 -> InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumAlgorithm.Crc64Nvme = 4 -> InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumAlgorithm.Sha1 = 2 -> InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumAlgorithm.Sha256 = 3 -> InMemoryBucket.Core.ChecksumAlgorithm
+InMemoryBucket.Core.ChecksumSet
+InMemoryBucket.Core.ChecksumSet.<Clone>$() -> InMemoryBucket.Core.ChecksumSet!
+InMemoryBucket.Core.ChecksumSet.ChecksumSet(string? Crc32 = null, string? Crc32C = null, string? Sha1 = null, string? Sha256 = null, string? Crc64Nvme = null) -> void
+InMemoryBucket.Core.ChecksumSet.Crc32.get -> string?
+InMemoryBucket.Core.ChecksumSet.Crc32.init -> void
+InMemoryBucket.Core.ChecksumSet.Crc32C.get -> string?
+InMemoryBucket.Core.ChecksumSet.Crc32C.init -> void
+InMemoryBucket.Core.ChecksumSet.Crc64Nvme.get -> string?
+InMemoryBucket.Core.ChecksumSet.Crc64Nvme.init -> void
+InMemoryBucket.Core.ChecksumSet.Deconstruct(out string? Crc32, out string? Crc32C, out string? Sha1, out string? Sha256, out string? Crc64Nvme) -> void
+InMemoryBucket.Core.ChecksumSet.Entries() -> System.Collections.Generic.IEnumerable<(InMemoryBucket.Core.ChecksumAlgorithm Algorithm, string! Value)>!
+InMemoryBucket.Core.ChecksumSet.Equals(InMemoryBucket.Core.ChecksumSet? other) -> bool
+InMemoryBucket.Core.ChecksumSet.IsEmpty.get -> bool
+InMemoryBucket.Core.ChecksumSet.Sha1.get -> string?
+InMemoryBucket.Core.ChecksumSet.Sha1.init -> void
+InMemoryBucket.Core.ChecksumSet.Sha256.get -> string?
+InMemoryBucket.Core.ChecksumSet.Sha256.init -> void
+InMemoryBucket.Core.ChecksumSet.this[InMemoryBucket.Core.ChecksumAlgorithm algorithm].get -> string?
+InMemoryBucket.Core.ChecksumSet.With(InMemoryBucket.Core.ChecksumAlgorithm algorithm, string! value) -> InMemoryBucket.Core.ChecksumSet!
+InMemoryBucket.Core.MultipartUpload
+InMemoryBucket.Core.MultipartUpload.Attributes.get -> InMemoryBucket.Core.ObjectAttributes!
+InMemoryBucket.Core.MultipartUpload.ChecksumAlgorithm.get -> InMemoryBucket.Core.ChecksumAlgorithm?
+InMemoryBucket.Core.MultipartUpload.ChecksumType.get -> string?
+InMemoryBucket.Core.MultipartUpload.Initiated.get -> System.DateTimeOffset
+InMemoryBucket.Core.MultipartUpload.Key.get -> string!
+InMemoryBucket.Core.MultipartUpload.UploadId.get -> string!
+InMemoryBucket.Core.ObjectAttributes
+InMemoryBucket.Core.ObjectAttributes.<Clone>$() -> InMemoryBucket.Core.ObjectAttributes!
+InMemoryBucket.Core.ObjectAttributes.ContentType.get -> string!
+InMemoryBucket.Core.ObjectAttributes.ContentType.init -> void
+InMemoryBucket.Core.ObjectAttributes.Deconstruct(out string! ContentType, out System.Collections.Immutable.ImmutableDictionary<string!, string!>! UserMetadata, out System.Collections.Immutable.ImmutableDictionary<string!, string!>! Headers, out string! StorageClass) -> void
+InMemoryBucket.Core.ObjectAttributes.Encryption.get -> InMemoryBucket.Core.ServerSideEncryption!
+InMemoryBucket.Core.ObjectAttributes.Encryption.init -> void
+InMemoryBucket.Core.ObjectAttributes.Equals(InMemoryBucket.Core.ObjectAttributes? other) -> bool
+InMemoryBucket.Core.ObjectAttributes.Headers.get -> System.Collections.Immutable.ImmutableDictionary<string!, string!>!
+InMemoryBucket.Core.ObjectAttributes.Headers.init -> void
+InMemoryBucket.Core.ObjectAttributes.ObjectAttributes(string! ContentType, System.Collections.Immutable.ImmutableDictionary<string!, string!>! UserMetadata, System.Collections.Immutable.ImmutableDictionary<string!, string!>! Headers, string! StorageClass = "STANDARD") -> void
+InMemoryBucket.Core.ObjectAttributes.StorageClass.get -> string!
+InMemoryBucket.Core.ObjectAttributes.StorageClass.init -> void
+InMemoryBucket.Core.ObjectAttributes.Tags.get -> System.Collections.Immutable.ImmutableDictionary<string!, string!>!
+InMemoryBucket.Core.ObjectAttributes.Tags.init -> void
+InMemoryBucket.Core.ObjectAttributes.UserMetadata.get -> System.Collections.Immutable.ImmutableDictionary<string!, string!>!
+InMemoryBucket.Core.ObjectAttributes.UserMetadata.init -> void
+InMemoryBucket.Core.ObjectStore
+InMemoryBucket.Core.ObjectStore.Buckets.get -> System.Collections.Generic.IReadOnlyList<InMemoryBucket.Core.Bucket!>!
+InMemoryBucket.Core.ObjectStore.GetBucket(string! name) -> InMemoryBucket.Core.Bucket!
+InMemoryBucket.Core.ObjectStore.TryGetBucket(string! name, out InMemoryBucket.Core.Bucket! bucket) -> bool
+InMemoryBucket.Core.ObjectStore.TotalBytes.get -> long
+InMemoryBucket.Core.S3ErrorCode
+InMemoryBucket.Core.S3ErrorCode.<Clone>$() -> InMemoryBucket.Core.S3ErrorCode!
+InMemoryBucket.Core.S3ErrorCode.Code.get -> string!
+InMemoryBucket.Core.S3ErrorCode.Code.init -> void
+InMemoryBucket.Core.S3ErrorCode.Deconstruct(out string! Code, out int HttpStatus, out string! DefaultMessage) -> void
+InMemoryBucket.Core.S3ErrorCode.DefaultMessage.get -> string!
+InMemoryBucket.Core.S3ErrorCode.DefaultMessage.init -> void
+InMemoryBucket.Core.S3ErrorCode.Equals(InMemoryBucket.Core.S3ErrorCode? other) -> bool
+InMemoryBucket.Core.S3ErrorCode.HttpStatus.get -> int
+InMemoryBucket.Core.S3ErrorCode.HttpStatus.init -> void
+InMemoryBucket.Core.S3ErrorCode.S3ErrorCode(string! Code, int HttpStatus, string! DefaultMessage) -> void
+InMemoryBucket.Core.S3Exception
+InMemoryBucket.Core.S3Exception.Code.get -> InMemoryBucket.Core.S3ErrorCode!
+InMemoryBucket.Core.S3Exception.Resource.get -> string?
+InMemoryBucket.Core.S3Exception.S3Exception(InMemoryBucket.Core.S3ErrorCode! code, string? message = null, string? resource = null) -> void
+InMemoryBucket.Core.S3Object
+InMemoryBucket.Core.S3Object.<Clone>$() -> InMemoryBucket.Core.S3Object!
+InMemoryBucket.Core.S3Object.Attributes.get -> InMemoryBucket.Core.ObjectAttributes!
+InMemoryBucket.Core.S3Object.Attributes.init -> void
+InMemoryBucket.Core.S3Object.Checksums.get -> InMemoryBucket.Core.ChecksumSet!
+InMemoryBucket.Core.S3Object.Checksums.init -> void
+InMemoryBucket.Core.S3Object.ChecksumType.get -> string?
+InMemoryBucket.Core.S3Object.ChecksumType.init -> void
+InMemoryBucket.Core.S3Object.Data.get -> System.ReadOnlyMemory<byte>
+InMemoryBucket.Core.S3Object.Data.init -> void
+InMemoryBucket.Core.S3Object.Deconstruct(out string! Key, out System.ReadOnlyMemory<byte> Data, out string! ETag, out System.DateTimeOffset LastModified, out InMemoryBucket.Core.ObjectAttributes! Attributes, out InMemoryBucket.Core.ChecksumSet! Checksums, out string? ChecksumType) -> void
+InMemoryBucket.Core.S3Object.Equals(InMemoryBucket.Core.S3Object? other) -> bool
+InMemoryBucket.Core.S3Object.ETag.get -> string!
+InMemoryBucket.Core.S3Object.ETag.init -> void
+InMemoryBucket.Core.S3Object.Key.get -> string!
+InMemoryBucket.Core.S3Object.Key.init -> void
+InMemoryBucket.Core.S3Object.LastModified.get -> System.DateTimeOffset
+InMemoryBucket.Core.S3Object.LastModified.init -> void
+InMemoryBucket.Core.S3Object.S3Object(string! Key, System.ReadOnlyMemory<byte> Data, string! ETag, System.DateTimeOffset LastModified, InMemoryBucket.Core.ObjectAttributes! Attributes, InMemoryBucket.Core.ChecksumSet! Checksums, string? ChecksumType = null) -> void
+InMemoryBucket.Core.S3Object.Size.get -> long
+InMemoryBucket.Core.ServerSideEncryption
+InMemoryBucket.Core.ServerSideEncryption.<Clone>$() -> InMemoryBucket.Core.ServerSideEncryption!
+InMemoryBucket.Core.ServerSideEncryption.Algorithm.get -> string!
+InMemoryBucket.Core.ServerSideEncryption.Algorithm.init -> void
+InMemoryBucket.Core.ServerSideEncryption.BucketKeyEnabled.get -> bool
+InMemoryBucket.Core.ServerSideEncryption.BucketKeyEnabled.init -> void
+InMemoryBucket.Core.ServerSideEncryption.Deconstruct(out string! Algorithm, out string? KmsKeyId, out bool BucketKeyEnabled) -> void
+InMemoryBucket.Core.ServerSideEncryption.Equals(InMemoryBucket.Core.ServerSideEncryption? other) -> bool
+InMemoryBucket.Core.ServerSideEncryption.IsKms.get -> bool
+InMemoryBucket.Core.ServerSideEncryption.KmsKeyId.get -> string?
+InMemoryBucket.Core.ServerSideEncryption.KmsKeyId.init -> void
+InMemoryBucket.Core.ServerSideEncryption.ServerSideEncryption(string! Algorithm, string? KmsKeyId = null, bool BucketKeyEnabled = false) -> void
+override InMemoryBucket.Core.ChecksumSet.Equals(object? obj) -> bool
+override InMemoryBucket.Core.ChecksumSet.GetHashCode() -> int
+override InMemoryBucket.Core.ChecksumSet.ToString() -> string!
+override InMemoryBucket.Core.ObjectAttributes.Equals(object? obj) -> bool
+override InMemoryBucket.Core.ObjectAttributes.GetHashCode() -> int
+override InMemoryBucket.Core.ObjectAttributes.ToString() -> string!
+override InMemoryBucket.Core.S3ErrorCode.Equals(object? obj) -> bool
+override InMemoryBucket.Core.S3ErrorCode.GetHashCode() -> int
+override InMemoryBucket.Core.S3ErrorCode.ToString() -> string!
+override InMemoryBucket.Core.S3Object.Equals(object? obj) -> bool
+override InMemoryBucket.Core.S3Object.GetHashCode() -> int
+override InMemoryBucket.Core.S3Object.ToString() -> string!
+override InMemoryBucket.Core.ServerSideEncryption.Equals(object? obj) -> bool
+override InMemoryBucket.Core.ServerSideEncryption.GetHashCode() -> int
+override InMemoryBucket.Core.ServerSideEncryption.ToString() -> string!
+static InMemoryBucket.Core.ChecksumSet.operator !=(InMemoryBucket.Core.ChecksumSet? left, InMemoryBucket.Core.ChecksumSet? right) -> bool
+static InMemoryBucket.Core.ChecksumSet.operator ==(InMemoryBucket.Core.ChecksumSet? left, InMemoryBucket.Core.ChecksumSet? right) -> bool
+static InMemoryBucket.Core.ObjectAttributes.operator !=(InMemoryBucket.Core.ObjectAttributes? left, InMemoryBucket.Core.ObjectAttributes? right) -> bool
+static InMemoryBucket.Core.ObjectAttributes.operator ==(InMemoryBucket.Core.ObjectAttributes? left, InMemoryBucket.Core.ObjectAttributes? right) -> bool
+static InMemoryBucket.Core.S3ErrorCode.operator !=(InMemoryBucket.Core.S3ErrorCode? left, InMemoryBucket.Core.S3ErrorCode? right) -> bool
+static InMemoryBucket.Core.S3ErrorCode.operator ==(InMemoryBucket.Core.S3ErrorCode? left, InMemoryBucket.Core.S3ErrorCode? right) -> bool
+static InMemoryBucket.Core.S3Object.operator !=(InMemoryBucket.Core.S3Object? left, InMemoryBucket.Core.S3Object? right) -> bool
+static InMemoryBucket.Core.S3Object.operator ==(InMemoryBucket.Core.S3Object? left, InMemoryBucket.Core.S3Object? right) -> bool
+static InMemoryBucket.Core.ServerSideEncryption.operator !=(InMemoryBucket.Core.ServerSideEncryption? left, InMemoryBucket.Core.ServerSideEncryption? right) -> bool
+static InMemoryBucket.Core.ServerSideEncryption.operator ==(InMemoryBucket.Core.ServerSideEncryption? left, InMemoryBucket.Core.ServerSideEncryption? right) -> bool
+static readonly InMemoryBucket.Core.ChecksumSet.Empty -> InMemoryBucket.Core.ChecksumSet!
+static readonly InMemoryBucket.Core.ObjectAttributes.Default -> InMemoryBucket.Core.ObjectAttributes!
+static readonly InMemoryBucket.Core.S3ErrorCode.AccessDenied -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.AuthorizationHeaderMalformed -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.AuthorizationQueryParametersError -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.BadDigest -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.BucketAlreadyOwnedByYou -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.BucketNotEmpty -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.EntityTooSmall -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InternalError -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidAccessKeyId -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidArgument -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidBucketName -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidDigest -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidPart -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidPartOrder -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidRange -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidRequest -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.InvalidTag -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.KeyTooLongError -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.MalformedXML -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.MetadataTooLarge -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.MethodNotAllowed -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.NoSuchBucket -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.NoSuchKey -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.NoSuchUpload -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.NotImplemented -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.NotModified -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.PreconditionFailed -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.RequestTimeout -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.RequestTimeTooSkewed -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.ServiceUnavailable -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.SignatureDoesNotMatch -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.SlowDown -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.S3ErrorCode.XAmzContentSHA256Mismatch -> InMemoryBucket.Core.S3ErrorCode!
+static readonly InMemoryBucket.Core.ServerSideEncryption.Default -> InMemoryBucket.Core.ServerSideEncryption!

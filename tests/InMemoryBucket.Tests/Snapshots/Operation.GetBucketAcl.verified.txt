@@ -1,0 +1,23 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000001
+
+<?xml version="1.0" encoding="utf-8"?>
+<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Owner>
+    <ID>inmemorybucket</ID>
+    <DisplayName>inmemorybucket</DisplayName>
+  </Owner>
+  <AccessControlList>
+    <Grant>
+      <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+        <ID>inmemorybucket</ID>
+        <DisplayName>inmemorybucket</DisplayName>
+      </Grantee>
+      <Permission>FULL_CONTROL</Permission>
+    </Grant>
+  </AccessControlList>
+</AccessControlPolicy>

@@ -1,0 +1,84 @@
+<Project>
+  <PropertyGroup>
+    <Authors>InMemoryBucket contributors</Authors>
+    <Product>InMemoryBucket</Product>
+    <CopyrightYears>2026</CopyrightYears>
+    <CopyrightYears Condition="$([System.DateTime]::UtcNow.Year) &gt; 2026">2026-$([System.DateTime]::UtcNow.Year)</CopyrightYears>
+    <Copyright>Copyright © $(CopyrightYears) $(Authors)</Copyright>
+    <PackageProjectUrl>https://github.com/saiganov/InMemoryBucket</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/saiganov/InMemoryBucket</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>s3;aws;minio;in-memory;testing;fake;mock</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <!-- Each package ships its own short README (next to the .csproj) and the shared icon. -->
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="\" />
+    <None Include="$(MSBuildThisFileDirectory)assets/icon.png" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <!--
+    Public API guard for the packages: any change to the public surface must be reflected in PublicAPI.*.txt
+    (RS0016/RS0017 are errors because warnings are). Item conditions see IsPackable from the project file.
+  -->
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="All" />
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Checks package structure on pack. PackageValidationBaselineVersion is added after 1.0.0 ships. -->
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!--
+    Every public member of a package (the projects under src/) is documented: CS1591 is an error because warnings are.
+    Keyed on the folder rather than IsPackable, which a property condition here cannot see yet, so new test and sample
+    projects need no opt-out.
+  -->
+  <PropertyGroup Condition="$([System.String]::Copy('$(MSBuildProjectDirectory)/').StartsWith('$(MSBuildThisFileDirectory)src/'))">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.1.0</VersionPrefix>
+  </PropertyGroup>
+
+  <!--
+    PackageReleaseNotes: the section of RELEASE_NOTES.md whose "#### X.Y.Z" heading matches VersionPrefix (up to the next
+    "####" heading), followed by a link to the whole file. Read when packing, so the notes always match the file and the
+    version; a VersionPrefix without a section fails the pack.
+  -->
+  <Target Name="SetPackageReleaseNotes" BeforeTargets="GenerateNuspec" Condition="'$(IsPackable)' != 'false'">
+    <PropertyGroup>
+      <_AllReleaseNotes>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)RELEASE_NOTES.md'))</_AllReleaseNotes>
+      <_CurrentReleaseNotes>$([System.Text.RegularExpressions.Regex]::Match($(_AllReleaseNotes), '(?ms)^#### $([System.Text.RegularExpressions.Regex]::Escape($(VersionPrefix))) .*?(?=\r?\n#### |\z)').Value.Trim())</_CurrentReleaseNotes>
+      <PackageReleaseNotes>$(_CurrentReleaseNotes)
+
+Full history: $(RepositoryUrl)/blob/main/RELEASE_NOTES.md</PackageReleaseNotes>
+    </PropertyGroup>
+    <Error Condition="'$(_CurrentReleaseNotes)' == ''" Text="RELEASE_NOTES.md has no '#### $(VersionPrefix) ...' section for VersionPrefix $(VersionPrefix)." />
+  </Target>
+
+  <PropertyGroup>
+    <NetLibVersion>net8.0</NetLibVersion>
+    <NetTestVersion>net10.0</NetTestVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+</Project>

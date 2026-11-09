@@ -1,0 +1,24 @@
+name: Nightly contract tests (MinIO)
+
+# The shared contract suite against a real MinIO in Testcontainers. Not part of PR CI by design;
+# run it by hand from the Actions tab when a protocol change needs checking.
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  minio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet build tests/InMemoryBucket.Tests.MinIO -c Release
+      - run: dotnet test --project tests/InMemoryBucket.Tests.MinIO --no-build -c Release
+        env:
+          INMEMORYBUCKET_MINIO_IMAGE: cgr.dev/chainguard/minio:latest

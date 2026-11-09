@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- InMemoryBucket package icon: a bucket filled with memory rows. Source for icon.png (256x256). -->
+  <rect width="256" height="256" rx="48" fill="#1f4e79"/>
+  <ellipse cx="128" cy="74" rx="78" ry="20" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <path d="M50 74 L72 196 Q128 222 184 196 L206 74" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
+  <rect x="82" y="112" width="92" height="14" rx="7" fill="#7fd1ff"/>
+  <rect x="88" y="138" width="80" height="14" rx="7" fill="#7fd1ff"/>
+  <rect x="94" y="164" width="68" height="14" rx="7" fill="#7fd1ff"/>
+</svg>

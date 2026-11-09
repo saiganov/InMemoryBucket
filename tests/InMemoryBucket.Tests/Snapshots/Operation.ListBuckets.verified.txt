@@ -1,0 +1,21 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000001
+
+<?xml version="1.0" encoding="utf-8"?>
+<ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Owner>
+    <ID>inmemorybucket</ID>
+    <DisplayName>inmemorybucket</DisplayName>
+  </Owner>
+  <Buckets>
+    <Bucket>
+      <Name>snap</Name>
+      <CreationDate>2026-01-01T00:00:00.000Z</CreationDate>
+      <BucketRegion>us-east-1</BucketRegion>
+    </Bucket>
+  </Buckets>
+</ListAllMyBucketsResult>

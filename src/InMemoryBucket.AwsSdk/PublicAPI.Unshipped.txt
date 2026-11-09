@@ -1,0 +1,7 @@
+#nullable enable
+InMemoryBucket.AwsSdk.InMemoryBucketServerExtensions
+InMemoryBucket.AwsSdk.ServiceCollectionExtensions
+static InMemoryBucket.AwsSdk.InMemoryBucketServerExtensions.CreateClient(this InMemoryBucket.InMemoryBucketServer! server, System.Action<Amazon.S3.AmazonS3Config!>? configure = null) -> Amazon.S3.AmazonS3Client!
+static InMemoryBucket.AwsSdk.InMemoryBucketServerExtensions.CreateClientConfig(this InMemoryBucket.InMemoryBucketServer! server) -> Amazon.S3.AmazonS3Config!
+static InMemoryBucket.AwsSdk.InMemoryBucketServerExtensions.CreateCredentials(this InMemoryBucket.InMemoryBucketServer! server) -> Amazon.Runtime.AWSCredentials!
+static InMemoryBucket.AwsSdk.ServiceCollectionExtensions.AddInMemoryBucket(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<InMemoryBucket.InMemoryBucketOptions!>? configure = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!

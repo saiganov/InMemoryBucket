@@ -1,0 +1,18 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+ETag: "de7dfe70924e91b296afd1f8fadf8458-1"
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000003
+x-amz-server-side-encryption: AES256
+
+<?xml version="1.0" encoding="utf-8"?>
+<CompleteMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Location>http://s3.in-memory.local/snap/big.bin</Location>
+  <Bucket>snap</Bucket>
+  <Key>big.bin</Key>
+  <ETag>"de7dfe70924e91b296afd1f8fadf8458-1"</ETag>
+  <ChecksumCRC32>aQMSFA==</ChecksumCRC32>
+  <ChecksumType>FULL_OBJECT</ChecksumType>
+</CompleteMultipartUploadResult>

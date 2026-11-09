@@ -1,0 +1,24 @@
+HTTP 200
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000003
+
+<?xml version="1.0" encoding="utf-8"?>
+<ListPartsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Bucket>snap</Bucket>
+  <Key>big.bin</Key>
+  <UploadId>upload-1</UploadId>
+  <StorageClass>STANDARD</StorageClass>
+  <PartNumberMarker>0</PartNumberMarker>
+  <NextPartNumberMarker>1</NextPartNumberMarker>
+  <MaxParts>1000</MaxParts>
+  <IsTruncated>false</IsTruncated>
+  <Part>
+    <PartNumber>1</PartNumber>
+    <LastModified>2026-01-01T00:01:00.000Z</LastModified>
+    <ETag>"3303e12af474ca11d85ed2966a932992"</ETag>
+    <Size>8</Size>
+  </Part>
+</ListPartsResult>

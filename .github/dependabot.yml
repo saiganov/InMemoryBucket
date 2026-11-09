@@ -1,0 +1,27 @@
+# Weekly dependency updates, grouped so each ecosystem opens at most one PR (plus separate PRs for major versions).
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      # Floors the packages depend on on purpose (S2-6, S2-7): raising them would force upgrades on users.
+      # CI tests the newest AWSSDK.S3 4.x separately.
+      - dependency-name: AWSSDK.S3
+      - dependency-name: Microsoft.Extensions.DependencyInjection.Abstractions
+      - dependency-name: Microsoft.Extensions.Logging.Abstractions
+      - dependency-name: Microsoft.Extensions.Http
+      - dependency-name: System.IO.Hashing
+    groups:
+      nuget-minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']

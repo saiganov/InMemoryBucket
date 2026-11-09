@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetLibVersion)</TargetFramework>
+    <Description>IHttpClientFactory integration for InMemoryBucket: AddHttpClient("s3").AddInMemoryBucketHandler() routes a named or typed HttpClient to the in-memory server, for the MinIO SDK or hand-written S3 clients. No AWS SDK dependency.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../InMemoryBucket/InMemoryBucket.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

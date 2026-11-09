@@ -1,0 +1,8 @@
+HTTP 200
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+ETag: "3303e12af474ca11d85ed2966a932992"
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000002
+x-amz-server-side-encryption: AES256
+

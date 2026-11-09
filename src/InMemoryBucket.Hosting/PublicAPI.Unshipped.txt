@@ -1,0 +1,11 @@
+#nullable enable
+InMemoryBucket.Hosting.InMemoryBucketApplicationBuilderExtensions
+InMemoryBucket.Hosting.InMemoryBucketHost
+InMemoryBucket.Hosting.InMemoryBucketHost.BaseAddress.get -> System.Uri!
+InMemoryBucket.Hosting.InMemoryBucketHost.CreateHttpClient() -> System.Net.Http.HttpClient!
+InMemoryBucket.Hosting.InMemoryBucketHost.DisposeAsync() -> System.Threading.Tasks.ValueTask
+InMemoryBucket.Hosting.InMemoryBucketHost.Port.get -> int
+InMemoryBucket.Hosting.InMemoryBucketHost.Server.get -> InMemoryBucket.InMemoryBucketServer!
+static InMemoryBucket.Hosting.InMemoryBucketApplicationBuilderExtensions.UseInMemoryBucket(this Microsoft.AspNetCore.Builder.IApplicationBuilder! app, InMemoryBucket.InMemoryBucketServer! server) -> Microsoft.AspNetCore.Builder.IApplicationBuilder!
+static InMemoryBucket.Hosting.InMemoryBucketHost.StartAsync(InMemoryBucket.InMemoryBucketServer! server, int port = 0, System.Net.IPAddress? address = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<InMemoryBucket.Hosting.InMemoryBucketHost!>!
+static InMemoryBucket.Hosting.InMemoryBucketHost.StartAsync(System.Action<InMemoryBucket.InMemoryBucketOptions!>? configure = null, int port = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<InMemoryBucket.Hosting.InMemoryBucketHost!>!

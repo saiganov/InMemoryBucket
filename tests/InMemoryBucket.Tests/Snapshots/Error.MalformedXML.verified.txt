@@ -1,0 +1,15 @@
+HTTP 400
+Content-Type: application/xml
+Date: Thu, 01 Jan 2026 00:01:00 GMT
+Server: InMemoryBucket
+x-amz-id-2: InMemoryBucket
+x-amz-request-id: 0000000000000001
+
+<?xml version="1.0" encoding="utf-8"?>
+<Error>
+  <Code>MalformedXML</Code>
+  <Message>The XML you provided was not well-formed or did not validate against our published schema.</Message>
+  <Resource>/snap/key.txt</Resource>
+  <RequestId>0000000000000001</RequestId>
+  <HostId>InMemoryBucket</HostId>
+</Error>
