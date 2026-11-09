@@ -137,7 +137,7 @@ Not yet: UploadPartCopy, versioning, bucket tagging, object lock, bucket policie
 
 ## Samples
 
-Each sample is a small application written the production way (no InMemoryBucket reference) with a test project that swaps in the fake. Together they cover the scenarios the library is for:
+Each sample is a small application written the production way (no InMemoryBucket reference), with its test project next to it (`samples/InMemoryBucket.Sample.*.Tests`) that swaps in the fake. Together they cover the scenarios the library is for:
 
 | Sample | Scenario | What the tests show |
 |---|---|---|
@@ -243,7 +243,7 @@ Packages are published only from `v*` tags (for example `v0.1.0-preview.1`), wit
 dotnet build
 dotnet test --project tests/InMemoryBucket.Tests
 dotnet test --project tests/InMemoryBucket.Hosting.Tests
-dotnet test --project tests/InMemoryBucket.Sample.Tests   # and the other tests/InMemoryBucket.Sample.*.Tests projects
+dotnet test --project samples/InMemoryBucket.Sample.Api.Tests   # and the other samples/*.Tests projects
 dotnet test --project tests/InMemoryBucket.Tests.MinIO    # needs Docker or INMEMORYBUCKET_MINIO_ENDPOINT
 ```
 

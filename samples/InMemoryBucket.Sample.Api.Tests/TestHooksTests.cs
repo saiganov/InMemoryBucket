@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Time.Testing;
 
-namespace InMemoryBucket.Sample.Tests;
+namespace InMemoryBucket.Sample.Api.Tests;
 
 /// <summary>
 /// The same API, with the test hooks: S3 failures injected on demand, the log of what the app sent, a fake clock,
