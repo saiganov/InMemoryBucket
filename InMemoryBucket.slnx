@@ -29,4 +29,7 @@
     <Project Path="tests/InMemoryBucket.Sample.Standalone.Tests/InMemoryBucket.Sample.Standalone.Tests.csproj" />
     <Project Path="tests/InMemoryBucket.Hosting.Tests/InMemoryBucket.Hosting.Tests.csproj" />
   </Folder>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/InMemoryBucket.Benchmarks/InMemoryBucket.Benchmarks.csproj" />
+  </Folder>
 </Solution>
