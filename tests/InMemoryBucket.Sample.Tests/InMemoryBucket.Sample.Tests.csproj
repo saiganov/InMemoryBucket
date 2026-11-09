@@ -18,6 +18,7 @@
     <ProjectReference Include="../../samples/InMemoryBucket.Sample.Api/InMemoryBucket.Sample.Api.csproj" />
     <ProjectReference Include="../../src/InMemoryBucket.AwsSdk/InMemoryBucket.AwsSdk.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
     <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio" />
   </ItemGroup>

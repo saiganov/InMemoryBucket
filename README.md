@@ -141,10 +141,8 @@ Each sample is a small application written the production way (no InMemoryBucket
 
 | Sample | Scenario | What the tests show |
 |---|---|---|
-| [`Sample.Api`](samples/InMemoryBucket.Sample.Api) | Minimal API storing files in S3 via `AddAWSService<IAmazonS3>()` | `WebApplicationFactory` + `AddInMemoryBucket()`: only the transport changes; seed and inspect the store directly. |
-| [`Sample.Worker`](samples/InMemoryBucket.Sample.Worker) | `BackgroundService` polling an `inbox/` prefix and moving processed files | A hosted service on a `FakeTimeProvider`: drive the poll loop by advancing the clock, inject one failure and watch the retry on the next pass, `Reset()` between scenarios. |
+| [`Sample.Api`](samples/InMemoryBucket.Sample.Api) | Minimal API storing files in S3 via `AddAWSService<IAmazonS3>()` | `WebApplicationFactory` + `AddInMemoryBucket()`: only the transport changes; seed and inspect the store directly. The test hooks on the same API: an injected S3 error, the request log, a `FakeTimeProvider`, `Reset()` between scenarios. |
 | [`Sample.Presigned`](samples/InMemoryBucket.Sample.Presigned) | API hands out presigned PUT/GET URLs; the browser talks to S3 directly | Two clients in one test (API and "browser"), uploads through the presigned URL, expiry on the fake clock, tampered URLs rejected with `ValidateSignatures`. |
-| [`Sample.Resilience`](samples/InMemoryBucket.Sample.Resilience) | Document store with its own retry, timeout and fallback policy | Fault injection: throttling retried with backoff, 4xx not retried, slow responses hitting the attempt timeout, transport exceptions, fallback to the last good copy, and the SDK's own retries counted in `Requests`. |
 | [`Sample.Minio`](samples/InMemoryBucket.Sample.Minio) | Media library on the MinIO .NET SDK | No AWS SDK at all: `MinioClient` with an `HttpClient` bound to the fake, streaming uploads, listings, share links, bulk delete; and the same client from DI through `AddInMemoryBucketHandler()`. |
 | [`Sample.Standalone`](samples/InMemoryBucket.Sample.Standalone) | Console host for clients outside the process (AWS CLI, boto3, containers) | `InMemoryBucket.Hosting` on a real port with custom credentials and strict signatures; an external `AmazonS3Client` and a raw HTTP client use it. `dotnet run -- --port 9000 --bucket uploads --strict` prints the AWS CLI commands. |
 
