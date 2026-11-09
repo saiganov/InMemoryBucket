@@ -201,13 +201,13 @@ Only what tests use is public; routing, parsing, ETag and checksum helpers, list
 
 ## Installing
 
-Until the API settles, packages are published only to GitHub Packages, not nuget.org. Packages are published only from `v*` tags (for example `v0.1.0-preview.1`); pushes to `main` build and test without publishing. GitHub Packages needs a token even for public packages, so add the feed with a personal access token that has the `read:packages` scope:
+Packages are on nuget.org. Until 1.0 they are pre-releases, so pass `--prerelease`:
 
 ```bash
-dotnet nuget add source "https://nuget.pkg.github.com/saiganov/index.json" \
-  --name inmemorybucket-github --username <github-user> --password <token> --store-password-in-clear-text
 dotnet add package InMemoryBucket.AwsSdk --prerelease
 ```
+
+Packages are published only from `v*` tags (for example `v0.1.0-preview.1`), with symbols; pushes to `main` build and test without publishing.
 
 ## Building
 
