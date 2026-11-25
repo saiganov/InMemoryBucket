@@ -8,7 +8,8 @@ the fake deliberately behave differently, the difference is listed here and the 
 |---|---|---|---|
 | Repeated `CreateBucket` on a bucket you own | 200 in `us-east-1`, 409 `BucketAlreadyOwnedByYou` elsewhere. The fake follows `InMemoryBucketOptions.Region`. | Always 409 | `RepeatedCreateBucketConflicts` |
 | `ListMultipartUploads` with a prefix or delimiter | Lists every in-progress upload under the prefix and rolls keys up by delimiter, so `TransferUtility.AbortMultipartUploadsAsync` works. | Answers only when the prefix is an exact key; a bucket-wide listing is empty. Documented MinIO simplification. | `ListsMultipartUploadsByPrefix` |
-| Default encryption | Every object is reported as SSE-S3: `x-amz-server-side-encryption: AES256` on writes and reads. KMS settings (`aws:kms`, key id, bucket key) are stored and echoed; nothing is encrypted in memory. | Without a KMS configured, no encryption header is sent. | `ReportsDefaultEncryption` |
+| Default encryption | Every object is reported as SSE-S3: `x-amz-server-side-encryption: AES256` on writes and reads. KMS settings (`aws:kms`, key id, bucket key) are stored and echoed; nothing is encrypted in memory. | Without a KMS configured, no encryption header is sent, or it is sent empty. | `ReportsDefaultEncryption` |
+| `PutObjectTagging` with more than 10 tags | 400 `InvalidTag`. | 400 `BadRequest`. Over-long keys and values are `InvalidTag` on both. | `TooManyTagsErrorCode` |
 | `ListObjectsV2` when the key count is a multiple of `max-keys` | The last full page has `IsTruncated=false`. | One more, empty page is returned before `IsTruncated=false`. | `MayReturnTrailingEmptyPage` |
 
 ## Fake-only behaviour
