@@ -373,7 +373,7 @@ public abstract class S3ContractTests : IAsyncLifetime
             Tagging = new Tagging { TagSet = Enumerable.Range(0, 11).Select(i => new Tag { Key = "k" + i, Value = "v" }).ToList() },
         }, Ct));
         Assert.Equal(HttpStatusCode.BadRequest, tooMany.StatusCode);
-        Assert.Equal("InvalidTag", tooMany.ErrorCode);
+        Assert.Equal(Backend.TooManyTagsErrorCode, tooMany.ErrorCode);
 
         var longKey = await Assert.ThrowsAnyAsync<AmazonS3Exception>(() => PutAsync("limits2", "x", configure: r => r.TagSet = [new Tag { Key = new string('k', 129), Value = "v" }]));
         Assert.Equal("InvalidTag", longKey.ErrorCode);
@@ -545,9 +545,17 @@ public abstract class S3ContractTests : IAsyncLifetime
         var put = await S3.PutObjectAsync(new PutObjectRequest { BucketName = Bucket, Key = "sse", ContentBody = "x" }, Ct);
         var head = await S3.GetObjectMetadataAsync(Bucket, "sse", Ct);
 
-        var expected = Backend.ReportsDefaultEncryption ? ServerSideEncryptionMethod.AES256 : null;
-        Assert.Equal(expected, put.ServerSideEncryptionMethod);
-        Assert.Equal(expected, head.ServerSideEncryptionMethod);
+        if (Backend.ReportsDefaultEncryption)
+        {
+            Assert.Equal(ServerSideEncryptionMethod.AES256, put.ServerSideEncryptionMethod);
+            Assert.Equal(ServerSideEncryptionMethod.AES256, head.ServerSideEncryptionMethod);
+        }
+        else
+        {
+            // No encryption means no header, or an empty one: newer MinIO sends it empty.
+            Assert.True(string.IsNullOrEmpty(put.ServerSideEncryptionMethod?.Value), $"PUT reported '{put.ServerSideEncryptionMethod}'");
+            Assert.True(string.IsNullOrEmpty(head.ServerSideEncryptionMethod?.Value), $"HEAD reported '{head.ServerSideEncryptionMethod}'");
+        }
     }
 
     [Fact]

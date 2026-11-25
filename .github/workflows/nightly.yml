@@ -21,4 +21,6 @@ jobs:
       - run: dotnet build tests/InMemoryBucket.Tests.MinIO -c Release
       - run: dotnet test --project tests/InMemoryBucket.Tests.MinIO --no-build -c Release
         env:
-          INMEMORYBUCKET_MINIO_IMAGE: cgr.dev/chainguard/minio:latest
+          # A specific MinIO build (commit ee9fee07), pinned by digest: the free Chainguard image publishes only :latest,
+          # versioned tags are paid. The run then changes only when we bump the digest, not when :latest moves.
+          INMEMORYBUCKET_MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:59953701f8f8d0de81aab456f0b0b6c0a1804119415559bf7ede79d944108879

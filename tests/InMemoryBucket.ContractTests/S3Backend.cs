@@ -38,7 +38,13 @@ public abstract class S3Backend
 
     /// <summary>
     /// AWS encrypts every new object with SSE-S3 and says so in <c>x-amz-server-side-encryption: AES256</c>. MinIO without a
-    /// KMS stores objects unencrypted and sends no such header.
+    /// KMS stores objects unencrypted and sends no such header (or sends it empty, which the SDK surfaces as an empty value).
     /// </summary>
     public virtual bool ReportsDefaultEncryption => Flavor != S3Flavor.MinIO;
+
+    /// <summary>
+    /// The error code for a tag set over the 10-tag limit. AWS answers <c>InvalidTag</c>; MinIO answers <c>BadRequest</c>
+    /// (same 400 status). Over-long tag keys and values are <c>InvalidTag</c> on both.
+    /// </summary>
+    public virtual string TooManyTagsErrorCode => Flavor == S3Flavor.MinIO ? "BadRequest" : "InvalidTag";
 }
