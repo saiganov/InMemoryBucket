@@ -14,6 +14,10 @@ updates:
       - dependency-name: Microsoft.Extensions.Logging.Abstractions
       - dependency-name: Microsoft.Extensions.Http
       - dependency-name: System.IO.Hashing
+      # Only tests and samples use it directly, but InMemoryBucket.Http gets it transitively through
+      # Microsoft.Extensions.Http, so Dependabot pins it there with VersionOverride, which would raise the Http package's
+      # dependency above 8.x. Bump it by hand in Directory.Packages.props.
+      - dependency-name: Microsoft.Extensions.DependencyInjection
     groups:
       nuget-minor-and-patch:
         update-types: [minor, patch]
